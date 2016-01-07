@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">  
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="./css/buttons.css">
+<link rel="shortcut icon" href="./images/dd_logo.jpg">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/stickUp.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.icheck.min.js"></script>
+<link href="./css/polaris.css" rel="stylesheet">
+
+<title>快来测测你的KET听力吧！</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?cff476eee0579ebef38c7cf289dbdadd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+ <script type="text/javascript">
+  //initiating jQuery
+  jQuery(function($) {
+	$(document).ready( function() {
+	  //enabling stickUp on the '.navbar-wrapper' class
+	  $('.navbar-wrapper').stickUp();
+	});
+  });
+</script>
+<script>
+$(document).ready(function(){
+  $('input').iCheck({
+    radioClass: 'iradio_polaris',
+    increaseArea: '-10' // optional
+  });
+});
+</script>
+</head>
+
+<body class="s_index text-center">
+	<!-- 开始页 -->
+    <div class="test-prepare" id="test-prepare">
+
+        <div class="buttons">
+            <h3>你的KET听力怎么样？</h3>
+			<p><strong>快来测测吧！</strong></p>
+			 <span class="button-wrap">
+				<a class="button button-pill button-raised button-primary" id="beginTest">开始答题！</a>
+			 </span>
+        </div>
+
+		<div class="footer">
+			<img src="./images/dd_logo.jpg" width="100px" height="100px"/>
+			<p><strong><font color="grey">叮叮英语原创<font></strong></p>
+		</div>
+    </div>
+
+	<!-- 测试页 -->
+	<div style="display:none;" class="test-main skin-polaris" id="test-main">
+		<div class="navbar-wrapper navbar-fixed-top">
+			<audio id="soundPlayer" preload="preload" controls="controls">
+				<source src="./audio/ket_listening_01.mp3" type="audio/mpeg">
+			</audio>
+		</div>
+		<div class="progress">
+            共<span id="total_num">5</span>题
+		</div>
+		
+		<div class="theQuestion" id="question_1">1. In the morning,Simon visited the __</div>
+		<table align="center">
+			<tr><td><input tabindex="1" type="radio" id="choices_1_1" name="iCheck_1" checked></td><td><span class="polaris-text">science museum</span></td></tr>
+			<tr><td><input tabindex="2" type="radio" id="choices_1_2" name="iCheck_1"></td><td><span class="polaris-text">motorbike factory</span></td></tr>
+			<tr><td><input tabindex="3" type="radio" id="choices_1_3" name="iCheck_1"></td><td><span class="polaris-text">TV centre</span></td></tr>
+		</table>
+
+		<div class="theQuestion" id="question_2">2. Simon thought the TV center was too __</div>
+		<table align="center">
+			<tr><td><input tabindex="1" type="radio" id="choices_2_1" name="iCheck_2" checked></td><td><span class="polaris-text">hot</span></td></tr>
+			<tr><td><input tabindex="2" type="radio" id="choices_2_2" name="iCheck_2"></td><td><span class="polaris-text">crowded</span></td></tr>
+			<tr><td><input tabindex="3" type="radio" id="choices_2_3" name="iCheck_2"></td><td><span class="polaris-text">noisy</span></td></tr>
+		</table>
+
+		<div class="theQuestion" id="question_3">3. Simon bought __</div>
+		<table align="center">
+			<tr><td><input tabindex="1" type="radio" id="choices_3_1" name="iCheck_3" checked></td><td><span class="polaris-text">a T-shirt</span></td></tr>
+			<tr><td><input tabindex="2" type="radio" id="choices_3_2" name="iCheck_3"></td><td><span class="polaris-text">a sandwich</span></td></tr>
+			<tr><td><input tabindex="3" type="radio" id="choices_3_3" name="iCheck_3"></td><td><span class="polaris-text">a poster</span></td></tr>
+		</table>
+
+		<div class="theQuestion" id="question_4">4. Simon enjoyed listening to talk about __</div>
+		<table align="center">
+			<tr><td><input tabindex="1" type="radio" id="choices_4_1" name="iCheck_4" checked></td><td><span class="polaris-text">music</span></td></tr>
+			<tr><td><input tabindex="2" type="radio" id="choices_4_2" name="iCheck_4"></td><td><span class="polaris-text">space travel</span></td></tr>
+			<tr><td><input tabindex="3" type="radio" id="choices_4_3" name="iCheck_4"></td><td><span class="polaris-text">clocks</span></td></tr>
+		</table>
+
+		<div class="theQuestion" id="question_5">5. Simon took photographs of __</div>
+		<table align="center">
+			<tr><td><input tabindex="1" type="radio" id="choices_5_1" name="iCheck_5" checked></td><td><span class="polaris-text">a park</span></td></tr>
+			<tr><td><input tabindex="2" type="radio" id="choices_5_2" name="iCheck_5"></td><td><span class="polaris-text">his friends</span></td></tr>
+			<tr><td><input tabindex="3" type="radio" id="choices_5_3" name="iCheck_5"></td><td><span class="polaris-text">a motorbike</span></td></tr>
+		</table>
+
+		<span class="button-wrap" id="endTest">
+				<a class="button button-pill button-raised button-primary">交卷</a>
+		</span>
+	</div>
+
+	<!-- 结束页 -->
+	<div style="display:none;" class="test-end" id="test-end">
+		<div class="test-result">
+            </br>
+			<p><span style="font-size:20px;" id="result">100%</span><p>
+			<p id="result_msg"></p>
+            <p>快分享给小伙伴们，看看他们的水平吧！</p>
+			<div style="height:20px;"></div>
+		</div>
+		<div class="promotion">
+			<a href="./ket_evaluation_word.html">查看 KET单词测试</a> <br/><br/>
+			<a href="./ket_evaluation_grammar.html">查看 KET语法测试</a> <br/><br/>
+			<a href="http://www.lizhi.fm/396634/22741523322512006?from=timeline&isappinstalled=1">查看 KET高频单词录音&解析</a>
+		</div>
+		<div class="logo">
+			<div class="left">
+				<img src="./images/dd_logo.jpg" width="90px" height="90px"/> 
+				<p>
+					<strong>
+						<font color="grey">
+							叮叮英语</br>
+							徐州专业KET/PET培训
+						</font>
+					</strong>
+				</p>
+			</div>
+			<div class="right">
+				<img src="./images/qrcode.jpg" width="90px" height="90px"/>
+				<p>
+					<strong>
+						联系人:刘倩老师</br>
+						联系电话:18652152557
+					</strong>
+				</p>
+			</div>
+		</div>
+	</div>
+
+    <style type="text/css">
+		body.s_index{margin:0px;background: url(./images/top_bg01.jpg) top left repeat;-webkit-touch-callout:none ;-webkit-user-select:none ;}
+		.text-center{font-family:'MontserratRegular', Helvetica, Arial, sans-serif;z-index:-100;text-align:center;}
+
+		.s_index .buttons{margin-top:100px;}
+		.test-prepare .footer{display:block;margin-top:100px;}
+		.test-prepare img{margin-bottom:10px;}
+
+		.test-main{bottom:0;height:100%;width:100%;display:block;}
+		.skin-polaris{color:#7a828b;background:#2c323c;font-family:'MontserratRegular', Helvetica, Arial, sans-serif;}
+		.polaris-text{cursor: pointer;  text-align: -webkit-match-parent;}
+		
+        .test-main .progress{padding-top:80px;font-size:20px;color:white;}
+		.test-main .theQuestion{font-size:18px;color:#54c2f1;margin-top:40px;}
+		.test-main #endTest{margin-top:40px;margin-bottom:40px}
+		.navbar-fixed-top{position:fixed;display:block;overflow:visible;z-index:1000;top:0;left:0;right:0;color:#333;line-height:20px;
+							background-image: linear-gradient(to bottom,#222,#111);background-color: #1b1b1b;background-repeat: repeat-x;
+							border-color: #252525;height:45px;}
+		.navbar-fixed-top #soundPlayer{padding-top:5px;}
+							
+		.test-end .test-result{width:100%;height:55%;background-color:#54c2f1;color:white;}
+        .test-end .promotion{margin-top:50px;font-size:20px;color:#54c2f1;}
+		.test-end .logo{margin-top:80px;}
+		.test-end .logo .left{float:left;margin-left:40px;font-size:12px;}
+		.test-end .logo .right{float:right;margin-right:40px;font-size:12px;}
+     </style>
+
+<!--添加统计代码-->
+
+<script>
+	var q_num = 5;
+	var correct_num = 0;
+	var answers = [2,1,3,2,2];//正确答案
+
+	//开始答题
+	$("#beginTest").mouseup(function(){
+		$("#total_num").text(q_num);
+		$("#test-prepare").hide();
+		$("#test-main").delay(400).fadeIn(300);
+	});
+
+	//结束答题
+	$("#endTest").mouseup(function(){
+		$("#test-main").fadeOut(0);
+
+	    //计算答对个数
+	    for(var i=1;i<=q_num;i++){
+			if($("input[name='iCheck_"+i+"']:checked").attr("tabindex") == answers[i-1]){
+				correct_num++;
+			}
+	    }
+        //计算正确率
+        correct_rate = Math.round((correct_num / q_num) * 100);
+        renderTestResult(correct_rate);
+	});
+
+	function renderTestResult(correct_rate){
+        $("#test-end").delay(200).fadeIn(400);
+		document.title = "KET听力测试"+q_num+"题，我竟然答对了"+correct_num+"题！快来测测你的吧！";
+        $("#result").text("共"+q_num+"题，你答对了"+correct_num+"题！正确率为"+correct_rate+"%。");
+        var result_msg = "";
+        if(correct_rate == 100){
+            result_msg = "秒杀全场！请允许我称呼你为英语大耳朵！";
+        }else if(correct_rate > 90){
+            result_msg = "少年,看你骨骼精奇,是万中无一的英语奇才！";
+        }else if(correct_rate > 70){
+            result_msg = "膜拜！你就是他们口中的别人家的孩子吧！";
+        }else if(correct_rate > 50){
+            result_msg = "不错！稍加努力你就可以备考KET啦！";
+        }else{
+            result_msg = "是不是没有发挥好？再来一次试试吧！";
+        }
+        $("#result_msg").text(result_msg);
+    }
+	
+	function is_weixn(){
+		var ua = navigator.userAgent.toLowerCase();  
+		if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			return true;  
+		} else {  
+			return false;  
+		}  
+	} 
+	
+    $(document).ready(function(){
+        if(!is_weixn()){
+		//	window.location.href = "https://www.baidu.com";
+		}
+    });
+
+</script>
+</body>
+</html>

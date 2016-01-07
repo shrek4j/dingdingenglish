@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">  
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="./css/buttons.css">
+<link rel="shortcut icon" href="./images/dd_logo.jpg">
+<script src="http://401.sfimg.cn/html/js/jquery-1.4.2.min.js"></script>
+<title>KET语法权威测试题！不要错过！</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cff476eee0579ebef38c7cf289dbdadd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+<body class="s_index text-center">
+    <div id="banner1" style="width:100%;height:30px;background:#121a2a;color:white;padding-top:10px;">徐州叮叮英语 专业KET、PET培训</div>
+	<!-- 开始页 -->
+    <div class="test-prepare" id="test-prepare">
+
+        <div class="buttons">
+            <h3>想考KET,语法不过关怎么行?</h3>
+			<p><strong>快来测测吧！</strong></p>
+			 <span class="button-wrap">
+				<a class="button button-pill button-raised button-primary" id="beginTest">开始答题！</a>
+			 </span>
+        </div>
+
+		<div class="footer">
+			<img src="./images/dd_logo.jpg" width="100px" height="100px"/>
+			<p><strong><font color="grey">叮叮英语原创<font></strong></p>
+		</div>
+    </div>
+
+	<!-- 测试页 -->
+	<div style="display:none;" class="test-main" id="test-main">
+		<div class="progress">
+            第<span id="curr_num"></span>题，共<span id="total_num"></span>题
+		</div>
+		
+		<div id="theQuestion">history</div>
+		<p><a id="choice0" style="width:200px" class="button button-glow button-border button-rounded button-primary" choose="0">不知道</a></p>	
+		<p><a id="choice1" style="width:200px" class="button button-glow button-rounded button-raised button-primary" choose="1">lowercase</a></p>
+		<p><a id="choice2" style="width:200px" class="button button-glow button-rounded button-raised button-primary" choose="2">lowercase</a></p>
+		<p><a id="choice3" style="width:200px" class="button button-glow button-rounded button-raised button-primary" choose="3">lowercase</a></p>
+	</div>
+
+	<!-- 结束页 -->
+	<div style="display:none;" class="test-end" id="test-end">
+		<div class="test-result">
+            </br>
+			<p>你的正确率为<span style="font-size:28px;" id="result">100%</span>。<p>
+			<p id="result_msg"></p>
+            <p><strong>分享给小伙伴们，看看他们的水平吧！</strong></p>
+			
+		</div>
+        <div class="promotion">
+			<a href="./ket_evaluation_word.html">查看 KET单词测试</a> <br/><br/>
+			<a href="./ket_evaluation_listening_1.html">查看 KET听力测试</a> <br/><br/>
+			<a href="http://www.lizhi.fm/396634/22741523322512006?from=timeline&isappinstalled=1">查看 KET高频单词录音&解析</a>
+		</div>
+		<div class="logo">
+			<div class="left">
+				<img src="./images/dd_logo.jpg" width="90px" height="90px"/> 
+				<p>
+					<strong>
+						<font color="grey">
+							叮叮英语</br>
+							徐州专业KET/PET培训
+						</font>
+					</strong>
+				</p>
+			</div>
+			<div class="right">
+				<img src="./images/qrcode.jpg" width="90px" height="90px"/>
+				<p>
+					<strong>
+						联系人:刘倩老师</br>
+						联系电话:18652152557
+					</strong>
+				</p>
+			</div>
+		</div>
+	</div>
+
+    <style type="text/css">
+		body.s_index{margin:0px;background: url(./images/top_bg01.jpg) top left repeat;-webkit-touch-callout:none ;-webkit-user-select:none ;}
+		.text-center{font-family:'helvetica','幼圆';text-align:center;}
+
+		.s_index .buttons{margin-top:100px;}
+		.test-prepare .footer{display:block;margin-top:100px;}
+		.test-prepare img{margin-bottom:10px;}
+
+		.test-main{margin-top:70px;}
+        .test-main .progress{font-size:25px;color:black;}
+		.test-main #theQuestion{font-size:20px;color:#54c2f1;margin-top:50px;margin-left:10px;margin-right:10px;}
+
+		.test-end .test-result{width:100%;height:55%;background-color:#54c2f1;color:white;padding-bottom:30px;}
+        .test-end .promotion{margin-top:50px;font-size:20px;color:#54c2f1;}
+		.test-end .logo{margin-top:120px;}
+		.test-end .logo .left{float:left;margin-left:40px;font-size:12px;}
+		.test-end .logo .right{float:right;margin-right:40px;font-size:12px;}
+        
+     </style>
+
+<!--添加统计代码-->
+
+<script>
+
+	function is_weixn(){  
+		var ua = navigator.userAgent.toLowerCase();  
+		if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			return true;  
+		} else {  
+			return false;  
+		}  
+	} 
+    
+    var correct_num = 0;
+    var correct_rate;
+	function showResult(){
+	   $("#test-main").fadeOut(0);
+       
+	    //计算答对个数
+	    for(var i=0;i<q_idx.length;i++){
+	       correct_num += (answers[q_idx[i]] == myAnswers[i] ? 1 : 0); 
+	    }
+        //计算正确率
+        correct_rate = Math.round((correct_num / q_num) * 100);
+        
+        renderTestResult(correct_rate);
+	}
+    
+    function renderTestResult(correct_rate){
+        $("#test-end").delay(200).fadeIn(400);
+		document.title = "哇塞！在KET语法测试中，我的正确率竟然达到了"+correct_rate+"%!快来测测你的吧！";
+        $("#result").text(correct_rate+"%");
+        var result_msg = "";
+        if(correct_rate == 100){
+            result_msg = "秒杀全场！请允许我称呼你为英语之神！";
+        }else if(correct_rate >= 90){
+            result_msg = "少年,看你骨骼精奇,是万中无一的英语奇才！";
+        }else if(correct_rate >= 70){
+            result_msg = "膜拜！你就是他们口中的别人家的孩子吧！";
+        }else if(correct_rate >= 50){
+            result_msg = "不错！稍加努力你就可以备考KET啦！";
+        }else{
+            result_msg = "是不是没有发挥好？再来一次试试吧！";
+        }
+        $("#result_msg").text(result_msg);
+    }
+    
+    function beginTest(){
+        prepareNextQuestion();
+        $("#total_num").text(q_num);
+        $("#test-prepare").hide();
+		$("#test-main").delay(400).fadeIn(300);
+    }
+    
+    var q_num = 20;//几道题
+    var curr_num = 0;//当前第几题
+    var myAnswers = [];//学生答案
+    var q_idx = [];//问题下标
+    
+    function saveChoice(choice){
+        myAnswers[curr_num-1] = choice;
+    }
+    
+    function prepareNextQuestion(){
+        if(curr_num == q_num){
+            showResult();
+            return;
+        }
+        //$("#test-main").delay(400).fadeIn(400);
+        var idx = chooseQuestionIndex();
+        $("#theQuestion").text(questions[idx]);
+        var thisAnswer = choices[idx].split("|");
+        $("#choice1").text(thisAnswer[0]);
+        $("#choice2").text(thisAnswer[1]);
+        $("#choice3").text(thisAnswer[2]);
+        curr_num++;
+        $("#curr_num").text(curr_num);
+        waitFlag = false;
+    }
+    
+    function chooseQuestionIndex(){
+        var choosenIndex = Math.round(Math.random() * (questions.length - 1));
+        var equalsFlag = false;
+        if(curr_num == 0){
+            q_idx[0] = choosenIndex;
+            return choosenIndex;
+        }else{
+            for(var i=0;i<q_idx.length;i++){
+                if(choosenIndex == q_idx[i]){
+                    equalsFlag = true;
+                }
+            }
+            if(equalsFlag){
+                return chooseQuestionIndex();
+            }else{
+                q_idx[q_idx.length] = choosenIndex;
+                return choosenIndex;
+            }
+        }
+    }
+
+    var waitFlag = false;//用来阻塞，不让按钮被点很多次
+    var waitTime = 200;
+
+    //开始答题
+	$("#beginTest").mouseup(function(){
+		beginTest();
+	});
+
+	$(".button-glow").click(function(){
+        if(waitFlag == true){
+            return;
+        }
+        waitFlag = true;
+        
+        var choice = $(this).attr("choose");
+        saveChoice(choice);
+        var correct = answers[q_idx[q_idx.length-1]];
+        
+		setTimeout('prepareNextQuestion()',waitTime);
+	});
+    
+    $(document).ready(function(){
+        if(!is_weixn()){
+		//	window.location.href = "https://www.baidu.com";
+		}
+    });
+
+</script>
+</body>
+<script>
+var questions = [
+    "On my birthday, I invited Sam,Ian ____ you.","Each way ____ a different meaning.","Some people would ____ to have a picnic in the park.","He is very interested ____ motorbike.","He felt cold so he asked for two more ____ on his bed.","African elephants are ____ interesting than Italian elephants.","Yesterday, my friends and I ____ a party and enjoyed ourselves.","Lisa has a lot to carry so she ____ a backpack to the swimming pool.","The children are afraid ____ the snakes.","Thanks for ____ me.","____ it doesn’t rain tomorrow, we will go camping ","Rice was first grown 1000 years ____.","Can I ____ a cup of coffee for you.","You will have much ____ fun learning with other people as well.","It doesn’t matter ____ it is a school night or a weekend night.","I lost the pen I usually write ____. Could you lend me ____?","It’s my mom’s birthday, I think I will buy ____ for her.","Would you like tea or coffee? - ____ is ok I really don’t mind.","Here is good ____ for you.","The winning kite ____ to fly well.","Tom’s apartment isn’t ____ from his school.","What about ____ to the skate park?","Lisa bought a fantastic new computer game ____ Find the Dragon.","We will make a fire so we can ____ sausages on it.","At the concert we ____ the words to most of the songs.","I am ____ that our football team will win this year.","I want to learn about different ____ of car engine.","Lee ____ three of her friends to go to a museum together.","It was a green spaceship with bright ____.","A man ____ out the spaceship and saw John.","After a ____ day, he was very tired.","She stays at the studio ____ late in the evening.","It only ____ Ivan five minutes to get to the cafe.","Cafe has different ____ of computer games to play.","Please call me when you ____ to the restaurant."
+];
+var choices = [
+    "for|and|but","have|has|having ","want|love|have","of|in|with ","sheets|towels|blankets","many|much|more","took|had|made","brings|moves|takes","with|for|of ","helping|help|helped","When| While|If ","since|ago|then","have|make|put","more|many|most ","so|because|if ","with yours|with your|on yours","something special|anything special|special anything","None|Either|Neither","news|ideas|messages","having|have|has ","near|far|late","go|going|goes ","said|told|called","have|cook|eat","believed|thought|knew","certain|careful|believe","ways|thing|kinds","invited|explained|agreed","feelings|voices|lights","brought|left|came","best|tall|long ","while|after|until","gets|has|takes","things|ways|kinds","arrive|went|get"
+];
+var answers = [
+	"2","2","2","2","3","3","2","3","3","1","3","2","2","1","3","1","1","2","1","3","3","2","3","2","3","1","3","1","3","3","3","3","3","3","3"
+];
+</script>
+</h

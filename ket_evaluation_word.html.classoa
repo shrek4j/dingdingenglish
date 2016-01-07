@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">  
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="http://www.bootcss.com/p/buttons/css/buttons.css">
+<link rel="shortcut icon" href="./images/dd_logo.jpg">
+<script src="http://401.sfimg.cn/html/js/jquery-1.4.2.min.js"></script>
+<title>快来测测你的KET词汇量吧！</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a7cd38c3ae309183ea51557f420092e1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body class="s_index text-center">
+	<!-- 开始页 -->
+    <div class="test-prepare" id="test-prepare">
+
+        <div class="buttons">
+            <h3>你的KET单词量有多大？</h3>
+			<p><strong>快来测测吧！</strong></p>
+			 <span class="button-wrap">
+				<a class="button button-pill button-raised button-primary" id="beginTest">开始答题！</a>
+			 </span>
+        </div>
+
+		<div class="footer">
+			<img src="./images/dd_logo.jpg" width="100px" height="100px"/>
+			<p><strong><font color="grey">叮叮英语原创<font></strong></p>
+		</div>
+    </div>
+
+	<!-- 测试页 -->
+	<div style="display:none;" class="test-main" id="test-main">
+		<div class="progress">
+            第<span id="curr_num"></span>题，共<span id="total_num"></span>题
+		</div>
+		
+		<div id="theQuestion">history</div>
+		<p><a id="choice0" style="width:200px" class="button button-glow button-border button-rounded button-primary" choose="0">不知道</a></p>	
+		<p><a id="choice1" style="width:200px" class="button button-glow button-rounded button-raised button-primary" choose="1">lowercase</a></p>
+		<p><a id="choice2" style="width:200px" class="button button-glow button-rounded button-raised button-primary" choose="2">lowercase</a></p>
+		<p><a id="choice3" style="width:200px" class="button button-glow button-rounded button-raised button-primary" choose="3">lowercase</a></p>
+	</div>
+
+	<!-- 结束页 -->
+	<div style="display:none;" class="test-end" id="test-end">
+		<div class="test-result">
+            </br>
+			<p>你的正确率为<span style="font-size:28px;" id="result">100%</span>。<p>
+			<p id="result_msg"></p>
+            <p>快分享给小伙伴们，看看他们的水平吧！</p>
+			<div style="height:20px;"></div>
+		</div>
+		<div class="promotion">
+			<p><strong>徐州专业KET/PET考级培训</strong></p>
+			<p><strong>通过率高达95%以上</strong></br>
+				<strong>高效专业的精英团队</strong></br>
+				<strong>多年累积独家高分技巧</strong><p>
+			</p>
+		</div>
+		<div class="logo">
+			<div style="float:left;margin-left:50px;">
+				<img src="./images/dd_logo.jpg" width="90px" height="90px"/> 
+				<p><strong><font color="grey">叮叮英语原创<font></strong></p>
+			</div>
+			<div style="float:right;margin-right:50px;font-size:12px;">
+				<img src="./images/qrcode.jpg" width="70px" height="70px"/>
+				<p>
+					联系人:刘倩老师</br>
+					微信号:365549038</br>
+					联系电话:18652152557</br>
+					地址:徐州户部商都715
+				</p>
+			</div>
+		</div>
+	</div>
+
+    <style type="text/css">
+		body.s_index{margin:0px;background: url(./images/top_bg01.jpg) top left repeat;-webkit-touch-callout:none ;-webkit-user-select:none ;}
+		.text-center{font-family:'helvetica','幼圆';text-align:center;}
+
+		.s_index .buttons{margin-top:100px;}
+		.test-prepare .footer{display:block;margin-top:100px;}
+		.test-prepare img{margin-bottom:10px;}
+
+		.test-main{margin-top:70px;}
+        .test-main .progress{font-size:25px;color:black;}
+		.test-main #theQuestion{font-size:40px;color:#54c2f1;margin-top:50px;}
+
+		.test-end .test-result{width:100%;height:55%;background-color:#54c2f1;color:white;}
+        .test-end .promotion{margin-top:80px;font-size:16px;color:#54c2f1;}
+		.test-end .logo{margin-top:50px;}
+        
+        .right_answer{color:#00CC66}
+        .wrong_answer{color:#CC0000}
+     </style>
+
+<!--添加统计代码-->
+
+<script>
+
+	function is_weixn(){  
+		var ua = navigator.userAgent.toLowerCase();  
+		if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			return true;  
+		} else {  
+			return false;  
+		}  
+	} 
+    
+    var correct_num = 0;
+    var correct_rate;
+	function showResult(){
+	   $("#test-main").fadeOut(0);
+       
+	    //计算答对个数
+	    for(var i=0;i<q_idx.length;i++){
+	       correct_num += (answers[q_idx[i]] == myAnswers[i] ? 1 : 0); 
+	    }
+        //计算正确率
+        correct_rate = Math.round((correct_num / q_num) * 100);
+        
+        renderTestResult(correct_rate);
+	}
+    
+    function renderTestResult(correct_rate){
+        $("#test-end").delay(200).fadeIn(400);
+		document.title = "哇塞！我的KET单词测试正确率竟然达到了"+correct_rate+"%!快来测测你的吧！";
+        $("#result").text(correct_rate+"%");
+        var result_msg = "";
+        if(correct_rate == 100){
+            result_msg = "秒杀全场！请允许我称呼你为英语之神！";
+        }else if(correct_rate > 90){
+            result_msg = "少年,看你骨骼精奇,是万中无一的英语奇才！";
+        }else if(correct_rate > 70){
+            result_msg = "膜拜！你就是他们口中的别人家的孩子吧！";
+        }else if(correct_rate > 50){
+            result_msg = "不错！稍加努力你就可以备考KET啦！";
+        }else{
+            result_msg = "是不是没有发挥好？再来一次试试吧！";
+        }
+        $("#result_msg").text(result_msg);
+    }
+    
+    function beginTest(){
+        prepareNextQuestion();
+        $("#total_num").text(q_num);
+        $("#test-prepare").hide();
+		$("#test-main").delay(400).fadeIn(300);
+    }
+    
+    var q_num = 15;//几道题
+    var curr_num = 0;//当前第几题
+    var myAnswers = [];//学生答案
+    var q_idx = [];//问题下标
+    
+    function saveChoice(choice){
+        myAnswers[curr_num-1] = choice;
+    }
+    
+    function prepareNextQuestion(){
+        if(curr_num == q_num){
+            showResult();
+            return;
+        }
+        //$("#test-main").delay(400).fadeIn(400);
+        var idx = chooseQuestionIndex();
+        if(idx > 35){
+            $("#theQuestion").css("font-size","20px");
+        }else{
+            $("#theQuestion").css("font-size","40px");
+        }
+        $("#theQuestion").text(questions[idx]);
+        var thisAnswer = choices[idx].split("|");
+        $("#choice1").text(thisAnswer[0]);
+        $("#choice2").text(thisAnswer[1]);
+        $("#choice3").text(thisAnswer[2]);
+        curr_num++;
+        $("#curr_num").text(curr_num);
+        waitFlag = false;
+    }
+    
+    function chooseQuestionIndex(){
+        var choosenIndex = Math.round(Math.random() * (questions.length - 1));
+        var equalsFlag = false;
+        if(curr_num == 0){
+            q_idx[0] = choosenIndex;
+            return choosenIndex;
+        }else{
+            for(var i=0;i<q_idx.length;i++){
+                if(choosenIndex == q_idx[i]){
+                    equalsFlag = true;
+                }
+            }
+            if(equalsFlag){
+                return chooseQuestionIndex();
+            }else{
+                q_idx[q_idx.length] = choosenIndex;
+                return choosenIndex;
+            }
+        }
+    }
+
+    var waitFlag = false;//用来阻塞，不让按钮被点很多次
+    var waitTime = 200;
+
+    //开始答题
+	$("#beginTest").mouseup(function(){
+		beginTest();
+	});
+
+	$(".button-glow").click(function(){
+        if(waitFlag == true){
+            return;
+        }
+        waitFlag = true;
+        
+        var choice = $(this).attr("choose");
+        saveChoice(choice);
+        var correct = answers[q_idx[q_idx.length-1]];
+        
+		setTimeout('prepareNextQuestion()',waitTime);
+	});
+    
+    $(document).ready(function(){
+        if(!is_weixn()){
+		//	window.location.href = "https://www.baidu.com";
+		}
+    });
+
+</script>
+</body>
+<script>
+var questions = [
+    "towel","barbecue","stadium","entrance","lorry","menu","carema","website","prize","dentist","curtain","salad","theater","glass","soap","mirror","tent","competition","shampoo","cycling","pillow","bell","uniform","beach","bridge","dictionary","necklace","forest","pineapple","plant","sweet","mountain","south","ambulance","map","round","It’s smaller than the river,people can swim or take a boat there.","People put things in it and carry it everywhere.","People wear these on their face so they can read easily.","After swimming,people use it to dry themselves.","It’s a comfortable seat for two or more people.","People who like to travel to a new place and look around.","It’s a green place,wild animals can live there.","People put vegetables or food in here to keep them fresh.","People have this hot drink at the end of the meal.","You can write it at the end of each day.","People can make chips with this vegetables.","It’s an old place where people can learn history.","People wear these on their shoes to keep warm.","When people go travelling,they need to pack their things and take it with them."
+];
+var choices = [
+    "脸盆|毛巾|塔","野餐|烧烤|饼干","体育馆|广场|游乐园","问题|表演|入口","卡车|带子|饮水机","纸巾|菜单|钱","照相机|船长|胶卷","遥控器|病毒|网站","礼物|奖品|价格","牙医|艺术家|科学家","当然了|毛毯|窗帘","生菜|椰子|沙拉","剧院|村庄|京剧","草地|杯子|班级","沙|线路|肥皂","城堡|沙发|镜子","帐篷|睡袋|石头","比较|比赛|运气","香波|成员|帆船运动","圆形|回收|骑行","药片|枕头|纯洁","爬|啤酒|铃铛","钱包|制服，校服|淋浴","沙滩|外套|队伍","冰箱|桥|乘客","字典|窗帘|地毯","手镯|项链|礼物","森林|农场|野生动物","菠萝|松树|苹果","植物|墙|邮局","咸的|甜的|苦的","山脉|星星|高速公路","东|南|北","出口|入口|救护车","线形图|锅|地图","长的|圆的|方的","bridge|sea|lake ","computer|bag|newspaper","glasses|tie|earrings","towel|tower|soap ","chair|table|sofa ","tourists|postcards|letters","village|zoo|forest","salad|sandwich|fridge","mineral water|coffee|juice","dairy|diary|letter","potato|tomato|pumpkin ","theater|club|museum","shoelaces|toes|socks","luggage|postcards|wallet"
+];
+var answers = [
+	"2","2","1","3","1","2","1","3","2","1","3","3","1","2","3","3","1","2","1","3","2","3","2","1","2","1","2","1","1","1","2","1","2","3","3","2","3","2","1","1","3","1","3","3","2","2","1","3","3","1"
+];
+</script>
+</html>
