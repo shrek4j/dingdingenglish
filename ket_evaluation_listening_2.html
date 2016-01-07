@@ -14,7 +14,7 @@
 <script src="./js/jquery.icheck.min.js"></script>
 <link href="./css/polaris.css" rel="stylesheet">
 
-<title>快来测测你的KET听力吧！</title>
+<title>快来测测你的KET听力（2）吧！</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script>
@@ -50,7 +50,7 @@ $(document).ready(function(){
     <div class="test-prepare" id="test-prepare">
 
         <div class="buttons">
-            <h3>你的KET听力怎么样？</h3>
+            <h3>你的KET听力怎么样（2）？</h3>
 			<p><strong>快来测测吧！</strong></p>
 			 <span class="button-wrap">
 				<a class="button button-pill button-raised button-primary" id="beginTest">开始答题！</a>
@@ -124,6 +124,7 @@ $(document).ready(function(){
 			<div style="height:20px;"></div>
 		</div>
 		<div class="promotion">
+			<a href="./ket_evaluation_listening_2.html">查看 KET听力测试（1）</a> <br/><br/>
 			<a href="./ket_evaluation_word.html">查看 KET单词测试</a> <br/><br/>
 			<a href="./ket_evaluation_grammar.html">查看 KET语法测试</a> <br/><br/>
 			<a href="http://www.lizhi.fm/396634/22741523322512006?from=timeline&isappinstalled=1">查看 KET高频单词录音&解析</a>
@@ -173,8 +174,8 @@ $(document).ready(function(){
 		.navbar-fixed-top #soundPlayer{padding-top:5px;}
 							
 		.test-end .test-result{width:100%;height:55%;background-color:#54c2f1;color:white;}
-        .test-end .promotion{margin-top:50px;font-size:20px;color:#54c2f1;}
-		.test-end .logo{margin-top:80px;}
+        .test-end .promotion{margin-top:50px;font-size:16px;color:#54c2f1;}
+		.test-end .logo{margin-top:40px;}
 		.test-end .logo .left{float:left;margin-left:40px;font-size:12px;}
 		.test-end .logo .right{float:right;margin-right:40px;font-size:12px;}
      </style>
@@ -210,7 +211,7 @@ $(document).ready(function(){
 
 	function renderTestResult(correct_rate){
         $("#test-end").delay(200).fadeIn(400);
-		document.title = "KET听力测试"+q_num+"题，我竟然答对了"+correct_num+"题！快来测测你的吧！";
+		document.title = "KET听力（2）共"+q_num+"题，我竟然答对了"+correct_num+"题！快来测测你的吧！";
         $("#result").text("共"+q_num+"题，你答对了"+correct_num+"题！正确率为"+correct_rate+"%。");
         var result_msg = "";
         if(correct_rate == 100){
